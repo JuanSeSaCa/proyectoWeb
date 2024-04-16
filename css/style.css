@@ -6,7 +6,7 @@
     margin: 0;
     padding: 0;
     box-sizing: border-box;
-    font-family:'Poppins','sans-serif';
+    font-family: sans-serif, 'poppins';
     text-decoration: none;
 }
 
@@ -46,7 +46,16 @@ a {
     padding: 2rem 0;
     color: var(--color-primario);
 }
-
+.header{
+    display: flex; 
+    gap: .7rem;
+}
+.header i{
+    font-size: 2.5rem;
+}
+.s1__title{
+    font-size: 2.1rem;
+}
 .s1__title:hover {
     color: var(--color-secundario);
 }
@@ -55,15 +64,25 @@ a {
     display: flex;
     flex-direction: column;
     gap: 1.5rem;
+
+}
+.abrigos .camisas .pants {
+    display: flex;
+}
+
+.abrigos img {
+    font-size: 10px;
 }
 
 .s1__nav a{
     cursor: pointer;
     padding: 0.5rem;
+    color: var(--color-secundario);
+    font-size: 1.2rem;
 }
 
 .s1__nav a:hover{
-    color: var(--color-secundario);
+    color: var(--color-primario);
 }
 
 .s1__Carritos {
@@ -253,6 +272,7 @@ a {
 
 .maint__titulo {
     color: var(--color-quinto);
+    margin-bottom: 0.5rem;
 }
 
 .maint__titulo:hover {
@@ -277,7 +297,7 @@ a {
 }
 
 .card:hover {
-    box-shadow: rgba(205, 202, 202, 0.35) 0px 5px 15px;
+    box-shadow: rgba(205, 202, 202, 0.35)5px 10px 40px;
 }
 
 .fig__Card{
@@ -290,17 +310,118 @@ a {
 }
 
 .img__Card{
-    height: 70%;
+    height: 85%;
+    object-fit: contain;
+
 }
 
+.name__card{
+    font-size: 1rem;
+    margin: 0.5rem 0;
+    font-weight: bold;
+}
 
+.text__card div{
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+}
 
+.bnt__card{
+    background-color: var(--color-primario);
+    padding: 0.3rem 0.5rem;
+   border-radius: 8px;
+   cursor: pointer;
+}
 
+.bnt__card:hover{
+    color: var(--color-secundario);
+}
 
 
 .main__cards__cont__carrito {
     display: initial;
 }
 
+<<<<<<< HEAD
 .
 >>>>>>> 149490f (feat: :construction: ajuste cards y plantilla imagenes)
+=======
+.select__product{
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    flex-wrap: wrap;
+    width: 100%;
+    background-color: var(--color-quinto);
+    gap: 1.5rem;
+    
+}
+
+.img__prod{
+    height: 150px;
+    width: 150px;
+}
+
+.img__prod img{
+    height: 100%;
+    width: 100%;
+    object-fit: cover;
+    object-position: top;
+}
+.select__product > div{
+    display: flex;
+    align-items: center;
+    gap: 2rem;
+}
+
+.select__product > div:last-child{
+    text-align: center;
+}
+
+.select__product h6{
+    font-size: 1.1rem;
+    text-transform: capitalize;
+   
+}
+
+.product__information, .prod__quantity, .pprice, .psubtotal {
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+   
+}
+.select__product i{
+    cursor: pointer;
+    margin-right: 2rem;
+}
+
+.footer__carritos {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    flex-direction: row;
+    width: 100%;
+    margin: 2rem 1rem;
+}
+
+.footer__carritos a, .footer__carritos button{
+    background-color: var(--color-primario);
+    border: none;
+    padding: 0.5rem 0.8rem;
+  border-radius: 8px;
+  color: black;
+  cursor: pointer;
+  font-size: 1rem;
+}
+
+.footer__carritos a:hover, .footer__carritos button:hover{
+    color: var(--color-secundario);
+    background-color: rgb(56, 120, 156);
+}
+.total__carrito{
+    display: flex;
+    gap: 5rem;
+    align-items: center;
+}
+>>>>>>> 472304d (feat: :sparkles: se termina allrmado css pagina carrito, inicio responsive)
