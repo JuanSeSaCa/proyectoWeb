@@ -6,7 +6,7 @@
     margin: 0;
     padding: 0;
     box-sizing: border-box;
-    font-family:'Poppins', 'sans-serif';
+    font-family:'Poppins','sans-serif';
     text-decoration: none;
 }
 
@@ -15,319 +15,70 @@ body {
     width: 100%;
 }
 
-
-.header {
-    display: flex;
-    justify-content: space-between;
-    flex-direction: row;
-    margin: 4rem 2rem 2rem 3.5rem;
-    height: 10vh;
-    align-items: center;
-
-
+img {
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+    object-position: top;
 }
 
-.header h2 {
+a {
+    text-decoration: none;
     color: var(--color-primario);
 }
 
-.header nav {
+.contppal {
+    max-width: 1500px;
+    margin: 0 auto;
     display: flex;
-    flex-direction: row;
-    text-decoration: none;
-    gap: 1rem;
-}
-
-.header li,
-.header ul,
-.header a {
-    text-decoration: none;
-
-}
-
-.header ul {
-    display: flex;
-    flex-direction: row;
+    justify-content: space-between;
+    height: 100vh;
     gap: 2rem;
 }
 
-.header li::marker {
-    color: var(--color-ternario);
-}
-
-.header a {
-    text-decoration: none;
-    color: var(--color-secundario);
-}
-
-.container__ppal {
+.section__1{
+    height: 100%;
+    min-width: 300px;
     display: flex;
-    flex-wrap: wrap;
-    height: calc(27.2px - 100vh);
-    justify-content: center;
+    flex-direction: column;
+    justify-content: space-between;
     align-items: center;
-    gap: 5rem;
-    margin: 3rem 6rem 6rem 7rem;
-}
-
-.img__ppal img {
-    width: 75%;
-    height: 75%;
-    object-fit: contain;
-}
-
-.title__card h1 {
+    padding: 2rem 0;
     color: var(--color-primario);
-    font-size: 5rem;
-    margin-bottom: .7rem;
 }
 
-.title__card p {
-    font-size: 2rem;
+.s1__title:hover {
     color: var(--color-secundario);
-    margin-right: 2rem;
-    margin-bottom: .7rem;
 }
 
-.title__card button {
-    background: var(--color-primario);
-    color: var(--color-secundario);
-    padding: .5rem 1rem;
-    border: none;
-    border-radius: 8px;
-}
-
-.container__about {
-    height: 100vh;
+.s1__nav{
     display: flex;
-    flex-wrap: wrap;
-
+    flex-direction: column;
+    gap: 1.5rem;
 }
 
-.img__about img {
-    object-fit: cover;
-    width: 75%;
-    height: 75%;
+.s1__nav a{
+    cursor: pointer;
+    padding: 0.5rem;
+}
+
+.s1__nav a:hover{
+    color: var(--color-secundario);
+}
+
+.s1__Carritos {
+    width: 80%;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    background-color: var(--color-sexto);
+    padding: 0.5em;
+    border-radius: 8px;
+    color: var(--color-quinto);
+    cursor: pointer;
 }
 
 <<<<<<< HEAD
-=======
-.section__2 button{
-    margin-top: 2vw;
-    background-color: var(--color-primario);
-    border: none;
-    width: 20%;
-    height: 8%;
-    color: var(--color-secundario);
-    font-size: 1rem;
-    margin-bottom: 50px;
-    border-radius: 8px;
-}
-
-.section__2 button:hover {
-    box-shadow: 0 0 12px var(--color-primario);
-    font-weight: bold;
-    cursor: pointer;
-    
-}
-
-.section__3{
-    width: 100%;
-    height: 100vh;
-    display: flex;
-}
-
-.section__3 .container__menu{
-    margin: auto;
-    text-align: center;
-    inset: 0;
-    margin-top: ;
-}
-
-.section__3 h5{
-    color: var(--color-primario);
-    font-size: 2rem;
-    margin-top: 3.1rem;
-}
-
-.section__3 h2{
-    font-size: 3em;
-    margin-bottom: 2.5vw;
-    color: var(--color-secundario);
-}
-
-.section__3 .img__menu{
-    display: grid;
-    margin: 1rem;
-    grid-template-columns: 1fr 1fr 1fr;
-    grid-template-rows: 1fr;
-    grid-template-areas: 
-    "img1 img2 img3"
-    ;
-}
-
-.section__3 .img__menu__1{
-    grid-area: img1;
-}
-.section__3 .img__menu__2{
-    grid-area: img2;
-}
-.section__3 .img__menu__3{
-    grid-area: img3;
-}
-
-.section__3 .img__menu .imagen{
-    width: 22em;
-    height: 27em;
-    margin: 12px;
-    padding-bottom: 45px;
-    background-color: var(--color-quinto);
-    border-radius: 5%;
-}
-
-.section__3 .img__menu__1 .img__menu__2 .img__menu__3{
-    width: 100%;
-    height: 70%;
-    display: flex;
-    justify-content: center;
-    grid-area: imagen;
-    overflow: hidden;
-    
-
-}
-
-.section__3 .carrito{
-    width: 14%;
-    display: flex;
-    justify-content: end;
-    align-items: center;
-    font-size: 30px;
-    padding-right: 10px;
-    background-color: var(--color-primario);
-    margin-left: 80%;
-    height: 10%;
-    margin-top: 5%;
-    border-bottom-left-radius: 30%;
-    border-bottom-right-radius: 30%;
-}
-
-.section__3 .carrito:hover {
-    box-shadow: 0 0 12px var(--color-primario);
-    color: var(--color-secundario);
-    cursor: pointer;
-}
-
-
-.section__3 h6{
-    font-size: 1.3rem;
-}
-
-.section__3 p{
-    color: var(--color-primario);
-    font-weight: bold;
-}
-
-.section__4{
-    width: 100%;
-    height: 100vh;
-    display: flex;
-}
-
-.section__4 .container__services{
-    inset: 0;
-    margin: auto;
-    text-align: center;
-}
-
-.section__4 h5{
-    color: var(--color-primario);
-    font-size: 2rem;
-}
-
-.section__4 h2{
-    font-size: 3em;
-    margin-bottom: 4vw;
-    color: var(--color-secundario);
-    margin-bottom: 5vw;
-
-}
-
-.section__4 .items__services{
-    width: 70%;
-    display: flex;
-    justify-content: space-between;
-    margin: auto;
-    align-items: center;
-    color: var(--color-secundario);
-   
-}
-.section__4 .itemss{
-width: 30%;
-}
-
-.section__4 .itemss div{
-    display: flex;
-    justify-content: center;
-    width: 100%;
-    height: 10em;
-}
-
-.section__5{
-    width: 100%;
-    height: 90vh;
-    display: flex;
-   
-
-}
-
-.section__5 div{
-    background-color: var(--color-quinto);
-    margin: auto;
-    width: 60%;
-    height: 60%;
-    display: flex;
-    flex-direction: column;
-    border-radius: 10px;
-}
-
-.section__5 div .container__quality{
-    width: 55%;
-    height: 55%;
-    margin: auto;
-   
-}
-
-.section__5 h2{
-    font-size: 2.8rem;
-    text-align: center;
-    margin: 4rem 8rem 2rem 8rem;
-}
-
-.section__5 .btn{
-    display: flex;
-    width: 100%;
-    align-items: center;
-
-}
-
-.section__5 button{
-    margin-top: 5vw;
-    margin-bottom: 1vw;
-    background-color: var(--color-primario);
-    border: none;
-    width: 10em;
-    height: 3em;
-    color: var(--color-secundario);
-    font-size: 1.1em;
-    border-radius: 8px;
-}
-
-.section__5 button:hover{
-    box-shadow: 0 0 12px var(--color-primario);
-    font-weight: bold;
-    cursor: pointer;
-}
-
 .footer{
     margin-top: 10%;
     width: 100%;
@@ -475,3 +226,8 @@ width: 30%;
 }
 >>>>>>> 365ab7a (feat: :sparkles: modificaciones responsive al 70%)
 >>>>>>> 4939334 (feat: :tada: inicio proyecto)
+=======
+.s1__Carritos:hover {
+    background-color: rgb(56, 120, 156);
+}
+>>>>>>> 956c86c (feat: :construction: armado css, barra navegacion ppal)
