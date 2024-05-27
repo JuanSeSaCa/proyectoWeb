@@ -129,3 +129,38 @@ export class MyElement extends LitElement {
 }
 
 window.customElements.define('my-element', MyElement)
+
+
+
+const showNotification = (options) => {
+  const Toast = Swal.mixin({
+    toast: true,
+    position: options.position || "top-end",
+    showConfirmButton: options.showConfirmButton || false,
+    timer: options.timer || 2000,
+    timerProgressBar: options.timerProgressBar || true,
+    didOpen: (toast) => {
+      toast.onmouseenter = Swal.stopTimer;
+      toast.onmouseleave = Swal.resumeTimer;
+    }
+  });
+  Toast.fire({
+    icon: options.icon || "success",
+    title: options.title || "Producto Agregado con exito ;)"
+  });
+};
+
+const added = async () => {
+  try {
+    // Código adicional aquí...
+
+    // Mostrar la notificación
+    showNotification({
+      icon: "success",
+      title: "Producto Agregado con exito ;)"
+    });
+  } catch (error) {
+    console.error("Error:", error);
+    // Manejar el error de alguna manera adecuada
+  }
+};
