@@ -2,7 +2,7 @@
     {
         "id": "abrigo-01",
         "titulo": "Abrigo 01",
-        "imagen": "./public/abrigo1.webp",
+        "imagen": "../../storage/img/img/abrigo01.png",
         "categoria": {
             "nombre": "Abrigos",
             "id": "abrigos"
@@ -12,7 +12,7 @@
     {
         "id": "abrigo-01",
         "titulo": "Abrigo 01",
-        "imagen": "./public/abrigo1.webp",
+        "imagen": "../../storage/img/img/abrigo01.png",
         "categoria": {
             "nombre": "Abrigos",
             "id": "abrigos"
@@ -22,7 +22,7 @@
     {
         "id": "abrigo-02",
         "titulo": "Abrigo 02",
-        "imagen": "./public/abrigo2.webp",
+        "imagen": "../../storage/img/img/abrigo02.png",
         "categoria": {
             "nombre": "Abrigos",
             "id": "abrigos"
@@ -32,7 +32,7 @@
     {
         "id": "abrigo-03",
         "titulo": "Abrigo 03",
-        "imagen": "./public/abrigo3.webp",
+        "imagen": "../../storage/img/img/abrigo03.png",
         "categoria": {
             "nombre": "Abrigos",
             "id": "abrigos"
@@ -42,7 +42,7 @@
     {
         "id": "abrigo-04",
         "titulo": "Abrigo 4",
-        "imagen": "./public/abrigo4.webp",
+        "imagen": "../../storage/img/img/abrigo04.png",
         "categoria": {
             "nombre": "Abrigos",
             "id": "abrigos"
@@ -52,7 +52,47 @@
     {
         "id": "abrigo-05",
         "titulo": "Abrigo 05",
-        "imagen": "./public/abrigo5.webp",
+        "imagen": "../../storage/img/img/abrigo05.png",
+        "categoria": {
+            "nombre": "Abrigos",
+            "id": "abrigos"
+        },
+        "precio": 1000
+    },
+    {
+        "id": "abrigo-06",
+        "titulo": "Abrigo 06",
+        "imagen": "../../storage/img/img/abrigo06.png",
+        "categoria": {
+            "nombre": "Abrigos",
+            "id": "abrigos"
+        },
+        "precio": 1000
+    },
+    {
+        "id": "abrigo-07",
+        "titulo": "Abrigo 07",
+        "imagen": "../../storage/img/img/abrigo07.png",
+        "categoria": {
+            "nombre": "Abrigos",
+            "id": "abrigos"
+        },
+        "precio": 1000
+    },
+    {
+        "id": "abrigo-08",
+        "titulo": "Abrigo 08",
+        "imagen": "../../storage/img/img/abrigo08.png",
+        "categoria": {
+            "nombre": "Abrigos",
+            "id": "abrigos"
+        },
+        "precio": 1000
+    },
+    {
+        "id": "abrigo-09",
+        "titulo": "Abrigo 09",
+        "imagen": "../../storage/img/img/abrigo09.png",
         "categoria": {
             "nombre": "Abrigos",
             "id": "abrigos"
@@ -62,7 +102,7 @@
     {
         "id": "camisa-01",
         "titulo": " Camisa 01",
-        "imagen": "./public/camisa1.webp",
+        "imagen": "../../storage/img/img/camisa01.png",
         "categoria": {
             "nombre": "Camisas",
             "id": "camisas"
@@ -72,7 +112,7 @@
     {
         "id": "camisa-02",
         "titulo": " Camisa 02",
-        "imagen": "./public/camisa2.webp",
+        "imagen": "../../storage/img/img/camisa02.png",
         "categoria": {
             "nombre": "Camisas",
             "id": "camisas"
@@ -82,7 +122,7 @@
     {
         "id": "camisa-03",
         "titulo": " Camisa 03",
-        "imagen": "./public/camisa3.webp",
+        "imagen": "../../storage/img/img/camisa03.png",
         "categoria": {
             "nombre": "Camisas",
             "id": "camisas"
@@ -92,7 +132,7 @@
     {
         "id": "camisa-04",
         "titulo": " Camisa 04",
-        "imagen": "./public/camisa4.webp",
+        "imagen": "../../storage/img/img/camisa04.png",
         "categoria": {
             "nombre": "Camisas",
             "id": "camisas"
@@ -102,7 +142,47 @@
     {
         "id": "camisa-05",
         "titulo": " Camisa 05",
-        "imagen": "./public/camisa5.webp",
+        "imagen": "../../storage/img/img/camisa05.png",
+        "categoria": {
+            "nombre": "Camisas",
+            "id": "camisas"
+        },
+        "precio": 1000
+    },
+    {
+        "id": "camisa-06",
+        "titulo": " Camisa 06",
+        "imagen": "../../storage/img/img/camisa06.png",
+        "categoria": {
+            "nombre": "Camisas",
+            "id": "camisas"
+        },
+        "precio": 1000
+    },
+    {
+        "id": "camisa-07",
+        "titulo": " Camisa 07",
+        "imagen": "../../storage/img/img/camisa07.png",
+        "categoria": {
+            "nombre": "Camisas",
+            "id": "camisas"
+        },
+        "precio": 1000
+    },
+    {
+        "id": "camisa-08",
+        "titulo": " Camisa 08",
+        "imagen": "../../storage/img/img/camisa08.png",
+        "categoria": {
+            "nombre": "Camisas",
+            "id": "camisas"
+        },
+        "precio": 1000
+    },
+    {
+        "id": "camisa-09",
+        "titulo": " Camisa 09",
+        "imagen": "../../storage/img/img/camisa09.png",
         "categoria": {
             "nombre": "Camisas",
             "id": "camisas"
@@ -112,7 +192,7 @@
     {
         "id": "pantalones-01",
         "titulo": " pantalones 01",
-        "imagen": "./public/pantalon1.webp",
+        "imagen": "../../storage/img/img/pantalon01.png",
         "categoria": {
             "nombre": "Pantalones",
             "id": "pantalones"
@@ -122,7 +202,7 @@
     {
         "id": "pantalones-02",
         "titulo": " pantalones 02",
-        "imagen": "./public/pantalon2.webp",
+        "imagen": "../../storage/img/img/pantalon02.png",
         "categoria": {
             "nombre": "Pantalones",
             "id": "pantalones"
@@ -132,7 +212,7 @@
     {
         "id": "pantalones-03",
         "titulo": " pantalones 03",
-        "imagen": "./public/pantalon3.webp",
+        "imagen": "../../storage/img/img/pantalon03.png",
         "categoria": {
             "nombre": "Pantalones",
             "id": "pantalones"
@@ -142,7 +222,7 @@
     {
         "id": "pantalones-04",
         "titulo": " pantalones 04",
-        "imagen": "./public/pantalon4.webp",
+        "imagen": "../../storage/img/img/pantalon04.png",
         "categoria": {
             "nombre": "Pantalones",
             "id": "pantalones"
@@ -152,7 +232,47 @@
     {
         "id": "pantalones-05",
         "titulo": " pantalones 05",
-        "imagen": "./public/pantalon5.webp",
+        "imagen": "../../storage/img/img/pantalon05.png",
+        "categoria": {
+            "nombre": "Pantalones",
+            "id": "pantalones"
+        },
+        "precio": 1000
+    },
+    {
+        "id": "pantalones-06",
+        "titulo": " pantalones 06",
+        "imagen": "../../storage/img/img/pantalon06.png",
+        "categoria": {
+            "nombre": "Pantalones",
+            "id": "pantalones"
+        },
+        "precio": 1000
+    },
+    {
+        "id": "pantalones-07",
+        "titulo": " pantalones 07",
+        "imagen": "../../storage/img/img/pantalon07.png",
+        "categoria": {
+            "nombre": "Pantalones",
+            "id": "pantalones"
+        },
+        "precio": 1000
+    },
+    {
+        "id": "pantalones-08",
+        "titulo": " pantalones 08",
+        "imagen": "../../storage/img/img/pantalon08.png",
+        "categoria": {
+            "nombre": "Pantalones",
+            "id": "pantalones"
+        },
+        "precio": 1000
+    },
+    {
+        "id": "pantalones-09",
+        "titulo": " pantalones 09",
+        "imagen": "../../storage/img/img/pantalon09.png",
         "categoria": {
             "nombre": "Pantalones",
             "id": "pantalones"

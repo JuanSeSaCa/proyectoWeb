@@ -336,6 +336,51 @@ class MyElement extends LitElement {
     position: relative;
   }
 
+  .number {
+    background-color: var(--color-quinto);
+    color:var(--color-ternario);
+    padding: 0 .30rem;
+    border-radius: .30rem;
+    border: none solid;
+  }
+
+  .menu {
+    list-style:none;
+    display: flex; 
+    flex-direction:column;
+    gap: 1rem;
+  }
+
+  .footer__text {
+    font-size: .9rem;
+    text-align:center;
+    color:var(--color-quinto);
+  }
+
+  main {
+    background-color: var (var(--color-sexto));
+    margin:1rem;
+    margin-left:0;
+    padding: 2.5rem;
+    border-radius: 1.5rem;
+  }
+
+  .principal__Titulo {
+    margin-bottom: 1.5rem;
+    color: var(--color-primario)
+  }
+  
+  .contenedor__productos{
+    display: grid;
+    grid-template-columns: repeat(auto-fill, minmax(250px, 1fr));
+    grid-auto-flow: row;
+    height: calc(100vh - 140px);
+    overflow-y: scroll;
+    gap: 1.5rem;
+  }
+
+
+
 
 
 
