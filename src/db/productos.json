@@ -9,157 +9,154 @@
         },
         "precio": 1000
     },
-{
-    "id": "abrigo-01",
-    "titulo": "Abrigo 01",
-    "imagen": "./public/abrigo1.webp",
-    "categoria": {
-        "nombre": "Abrigos",
-        "id": "abrigos"
+    {
+        "id": "abrigo-01",
+        "titulo": "Abrigo 01",
+        "imagen": "./public/abrigo1.webp",
+        "categoria": {
+            "nombre": "Abrigos",
+            "id": "abrigos"
+        },
+        "precio": 1000
     },
-    "precio": 1000
-},
-{
-    "id": "abrigo-02",
-    "titulo": "Abrigo 02",
-    "imagen": "./public/abrigo2.webp",
-    "categoria": {
-        "nombre": "Abrigos",
-        "id": "abrigos"
+    {
+        "id": "abrigo-02",
+        "titulo": "Abrigo 02",
+        "imagen": "./public/abrigo2.webp",
+        "categoria": {
+            "nombre": "Abrigos",
+            "id": "abrigos"
+        },
+        "precio": 1000
     },
-    "precio": 1000
-},
-{
-    "id": "abrigo-03",
-    "titulo": "Abrigo 03",
-    "imagen": "./public/abrigo3.webp",
-    "categoria": {
-        "nombre": "Abrigos",
-        "id": "abrigos"
+    {
+        "id": "abrigo-03",
+        "titulo": "Abrigo 03",
+        "imagen": "./public/abrigo3.webp",
+        "categoria": {
+            "nombre": "Abrigos",
+            "id": "abrigos"
+        },
+        "precio": 1000
     },
-    "precio": 1000
-},
-{
-    "id": "abrigo-04",
-    "titulo": "Abrigo 4",
-    "imagen": "./public/abrigo4.webp",
-    "categoria": {
-        "nombre": "Abrigos",
-        "id": "abrigos"
+    {
+        "id": "abrigo-04",
+        "titulo": "Abrigo 4",
+        "imagen": "./public/abrigo4.webp",
+        "categoria": {
+            "nombre": "Abrigos",
+            "id": "abrigos"
+        },
+        "precio": 1000
     },
-    "precio": 1000
-},
-{
-    "id": "abrigo-05",
-    "titulo": "Abrigo 05",
-    "imagen": "./public/abrigo5.webp",
-    "categoria": {
-        "nombre": "Abrigos",
-        "id": "abrigos"
+    {
+        "id": "abrigo-05",
+        "titulo": "Abrigo 05",
+        "imagen": "./public/abrigo5.webp",
+        "categoria": {
+            "nombre": "Abrigos",
+            "id": "abrigos"
+        },
+        "precio": 1000
     },
-    "precio": 1000
-},
-
-{
-    "id": "camisa-01",
-    "titulo": " Camisa 01",
-    "imagen": "./public/camisa1.webp",
-    "categoria": {
-        "nombre": "Camisas",
-        "id": "camisas"
+    {
+        "id": "camisa-01",
+        "titulo": " Camisa 01",
+        "imagen": "./public/camisa1.webp",
+        "categoria": {
+            "nombre": "Camisas",
+            "id": "camisas"
+        },
+        "precio": 1000
     },
-    "precio": 1000
-},
-{
-    "id": "camisa-02",
-    "titulo": " Camisa 02",
-    "imagen": "./public/camisa2.webp",
-    "categoria": {
-        "nombre": "Camisas",
-        "id": "camisas"
+    {
+        "id": "camisa-02",
+        "titulo": " Camisa 02",
+        "imagen": "./public/camisa2.webp",
+        "categoria": {
+            "nombre": "Camisas",
+            "id": "camisas"
+        },
+        "precio": 1000
     },
-    "precio": 1000
-},
-{
-    "id": "camisa-03",
-    "titulo": " Camisa 03",
-    "imagen": "./public/camisa3.webp",
-    "categoria": {
-        "nombre": "Camisas",
-        "id": "camisas"
+    {
+        "id": "camisa-03",
+        "titulo": " Camisa 03",
+        "imagen": "./public/camisa3.webp",
+        "categoria": {
+            "nombre": "Camisas",
+            "id": "camisas"
+        },
+        "precio": 1000
     },
-    "precio": 1000
-},
-{
-    "id": "camisa-04",
-    "titulo": " Camisa 04",
-    "imagen": "./public/camisa4.webp",
-    "categoria": {
-        "nombre": "Camisas",
-        "id": "camisas"
+    {
+        "id": "camisa-04",
+        "titulo": " Camisa 04",
+        "imagen": "./public/camisa4.webp",
+        "categoria": {
+            "nombre": "Camisas",
+            "id": "camisas"
+        },
+        "precio": 1000
     },
-    "precio": 1000
-},
-{
-    "id": "camisa-05",
-    "titulo": " Camisa 05",
-    "imagen": "./public/camisa5.webp",
-    "categoria": {
-        "nombre": "Camisas",
-        "id": "camisas"
+    {
+        "id": "camisa-05",
+        "titulo": " Camisa 05",
+        "imagen": "./public/camisa5.webp",
+        "categoria": {
+            "nombre": "Camisas",
+            "id": "camisas"
+        },
+        "precio": 1000
     },
-    "precio": 1000
-},
-{
-    "id": "pantalones-01",
-    "titulo": " pantalones 01",
-    "imagen": "./public/pantalon1.webp",
-    "categoria": {
-        "nombre": "Pantalones",
-        "id": "pantalones"
+    {
+        "id": "pantalones-01",
+        "titulo": " pantalones 01",
+        "imagen": "./public/pantalon1.webp",
+        "categoria": {
+            "nombre": "Pantalones",
+            "id": "pantalones"
+        },
+        "precio": 1000
     },
-    "precio": 1000
-},
-{
-    "id": "pantalones-02",
-    "titulo": " pantalones 02",
-    "imagen": "./public/pantalon2.webp",
-    "categoria": {
-        "nombre": "Pantalones",
-        "id": "pantalones"
+    {
+        "id": "pantalones-02",
+        "titulo": " pantalones 02",
+        "imagen": "./public/pantalon2.webp",
+        "categoria": {
+            "nombre": "Pantalones",
+            "id": "pantalones"
+        },
+        "precio": 1000
     },
-    "precio": 1000
-},
-{
-    "id": "pantalones-03",
-    "titulo": " pantalones 03",
-    "imagen": "./public/pantalon3.webp",
-    "categoria": {
-        "nombre": "Pantalones",
-        "id": "pantalones"
+    {
+        "id": "pantalones-03",
+        "titulo": " pantalones 03",
+        "imagen": "./public/pantalon3.webp",
+        "categoria": {
+            "nombre": "Pantalones",
+            "id": "pantalones"
+        },
+        "precio": 1000
     },
-    "precio": 1000
-},
-
-{
-    "id": "pantalones-04",
-    "titulo": " pantalones 04",
-    "imagen": "./public/pantalon4.webp",
-    "categoria": {
-        "nombre": "Pantalones",
-        "id": "pantalones"
+    {
+        "id": "pantalones-04",
+        "titulo": " pantalones 04",
+        "imagen": "./public/pantalon4.webp",
+        "categoria": {
+            "nombre": "Pantalones",
+            "id": "pantalones"
+        },
+        "precio": 1000
     },
-    "precio": 1000
-},
-
-{
-    "id": "pantalones-05",
-    "titulo": " pantalones 05",
-    "imagen": "./public/pantalon5.webp",
-    "categoria": {
-        "nombre": "Pantalones",
-        "id": "pantalones"
-    },
-    "precio": 1000
-}
+    {
+        "id": "pantalones-05",
+        "titulo": " pantalones 05",
+        "imagen": "./public/pantalon5.webp",
+        "categoria": {
+            "nombre": "Pantalones",
+            "id": "pantalones"
+        },
+        "precio": 1000
+    }
 ]
