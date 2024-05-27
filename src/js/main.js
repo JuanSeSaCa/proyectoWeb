@@ -185,7 +185,35 @@ class MyElement extends LitElement {
   }
 ///////////// css //////////////////
   static styles = css`
-    /* Estilos CSS aquí */
+  .contain {
+  display: grid;
+  grid-template-columns: 1fr 4fr;
+  background-color: var(--color-ternario);
+  }
+
+  aside {
+    position:sticky;
+    justify-content: space-evenly;
+    flex-direction: column;
+    display:flex;
+    height: 100vh;
+    top:0;
+    padding:1rem;
+    padding-right: 0;
+    color: var(--color-primario)
+
+  }
+
+  .logo {
+    font-size:2rem;
+    text-align: center;
+    font-weight:700;
+  }
+
+  .button__Category {
+    font
+  }
+    
   `;
 
   render() {
@@ -313,11 +341,6 @@ renderCarrito() {
     ` : html`<div class="alerta__carrito"><p>Tu carrito está vacío...</p><img class="gato" src="./public/Gato.svg" alt=""></div>`}
   `;
 }
-
-
-
-
-
 
 
   eliminarDelCarrito(productId) {
