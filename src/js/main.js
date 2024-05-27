@@ -137,57 +137,92 @@
 import { LitElement, html, css } from 'lit'
 
 class MyElement extends LitElement {
-  static get properties()  {
-    return {
-    activeCategory: { type: String },
-    view: { type: String },
-    cartItems: { type: Array },
-    products: { type: Array },
-    menuOpen: { type: Boolean }
-    };
-  }
-
-  constructor() {
-    super();
-    this.activeCategory = 'all';
-    this.view = 'products';
-    this.cartItems = [];
-    this.products = [];
-    this.menuOpen = false;
-    this.loadProducts();
-  }
-
-  connectedCallback() {
-    super.connectedCallback();
-    this.loadProducts();
-  }
-
-  async loadProducts() {
-    try {
-      const response = await fetch('../src/productos.json');
-      const data = await response.json();
-      this.products = data.map(item => ({
-        id: item.id,
-        title: item.titulo,
-        image: item.imagen,
-        category: item.categoria.id,
-        price: item.precio
-      }));
-      this.requestUpdate();
-    } catch (error) {
-      console.error('Error al cargar los productos:', error);
+    static get properties() {
+        return {
+            activeCategory: { type: String },
+            view: { type: String },
+            cartItems: { type: Array },
+            products: { type: Array },
+            menuOpen: { type: Boolean }
+        };
     }
-  }
-///////////// css //////////////////
-  static styles = css`
+
+    constructor() {
+        super();
+        this.activeCategory = 'all';
+        this.view = 'products';
+        this.cartItems = [];
+        this.products = [];
+        this.menuOpen = false;
+        this.loadProducts();
+    }
+
+    connectedCallback() {
+        super.connectedCallback();
+        this.loadProducts();
+    }
+
+    async loadProducts() {
+        try {
+            const response = await fetch('../src/productos.json');
+            const data = await response.json();
+            this.products = data.map(item => ({
+                id: item.id,
+                title: item.titulo,
+                image: item.imagen,
+                category: item.categoria.id,
+                price: item.precio
+            }));
+            this.requestUpdate();
+        } catch (error) {
+            console.error('Error al cargar los productos:', error);
+        }
+    }
+    ///////////// css //////////////////
+    static styles = css`
     /* Estilos CSS aquí */
   `;
 
-  render() {
-    return html`
-      <!-- Contenido HTML aquí -->
+    render() {
+        return html`
+    <div class="contain">
+    <header class="header">
+        <h1 class="logo">CampusShop</h1>
+        <button class="open__menu" @click="${this.openMenu}">
+            <img class="menu__svg" src="./public/menu.svg" alt="">
+        </button>
+    </header>
+    <aside class="${this.menuOpen ? 'aside-visible' : ''}">
+        <header class="header__menue">
+            <h1 class="logo">CampusShop</h1>
+            <button class="close__menu" @click="${this.closeMenu}">
+                <img class="closeMenu__svg" src="./public/closeMenu__svg.svg" alt="">
+            </button>
+        </header>
+            <nav>
+                <ul class="menu">
+                    <li><button class="button__Category ${this.activeCategory === 'all' ? 'active' : ''}" @click=${() => this.changeCategory('all')}>Todos los Productos</button></li>
+                    <li><button class="button__Category ${this.activeCategory === 'abrigos' ? 'active' : ''}" @click=${() => this.changeCategory('abrigos')}>Abrigos</button></li>
+                    <li><button class="button__Category ${this.activeCategory === 'camisas' ? 'active' : ''}" @click=${() => this.changeCategory('camisas')}>Camisetas</button></li>
+                    <li><button class="button__Category ${this.activeCategory === 'pantalones' ? 'active' : ''}" @click=${() => this.changeCategory('pantalones')}>Pantalones</button></li>
+                    <li style="width: 100%;">
+                        <a class="cart__Button ${this.view === 'cart' ? 'active' : ''}" @click=${this.viewCart}>
+                            Cart
+                            <span class="number">${this.cartItems.length}</span>
+                        </a>
+                    </li>
+                </ul>
+            </nav>
+            <footer>
+                <p class="footer__text">© 2024 CampusShop</p>
+            </footer>
+        </aside>
+        <main>
+            ${this.view === 'products' ? this.renderProducts() : this.renderCart()}
+        </main>
+    </div>
     `;
-  }
+    }
 }
 
 customElements.define('my-element', MyElement);
@@ -197,36 +232,36 @@ customElements.define('my-element', MyElement);
 
 
 //
-    
-    const showNotification = (options) => {
-      const Toast = Swal.mixin({
+
+const showNotification = (options) => {
+    const Toast = Swal.mixin({
         toast: true,
         position: options.position || "top-end",
         showConfirmButton: options.showConfirmButton || false,
         timer: options.timer || 2000,
         timerProgressBar: options.timerProgressBar || true,
         didOpen: (toast) => {
-          toast.onmouseenter = Swal.stopTimer;
-          toast.onmouseleave = Swal.resumeTimer;
+            toast.onmouseenter = Swal.stopTimer;
+            toast.onmouseleave = Swal.resumeTimer;
         }
-      });
-      Toast.fire({
+    });
+    Toast.fire({
         icon: options.icon || "success",
         title: options.title || "Producto Agregado con exito ;)"
-      });
-    };
-    
-    const added = async () => {
-      try {
+    });
+};
+
+const added = async () => {
+    try {
         // Código adicional aquí...
-    
+
         // Mostrar la notificación
         showNotification({
-          icon: "success",
-          title: "Producto Agregado con exito ;)"
+            icon: "success",
+            title: "Producto Agregado con exito ;)"
         });
-      } catch (error) {
+    } catch (error) {
         console.error("Error:", error);
         // Manejar el error de alguna manera adecuada
-      }
-    };
+    }
+};
