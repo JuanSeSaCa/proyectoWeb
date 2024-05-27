@@ -378,6 +378,210 @@ class MyElement extends LitElement {
     overflow-y: scroll;
     gap: 1.5rem;
   }
+  .producto {
+    background-color: var(--color-cuarto) ;
+    padding: 1rem;
+    border-radius: 1rem;
+    text-align: center;
+  }
+  .producto:hover {
+    transform: scale(1.03);
+        transition: transform 0.3s ease-in-out;
+  }
+  .producto__Imagen {
+    max-width: 100%;
+    border-radius: 1rem;
+  }
+  .producto__Detalles {
+    margin-top: 1rem;
+  }
+
+  .producto__Titulo {
+    color:var(--color-quinto);
+    font-size: 1.2rem;
+    margin-bottom: .4rem;
+  }
+
+  .producto__Precio {
+    color: var(--color-quinto);
+    font-weight: bold;
+    margin-bottom: 1rem;
+
+  }
+
+  .agregar__producto {
+
+    background-color: var(--color-sexto);
+    color: var(--color-quinto);
+    font-weight:600;
+    padding: .5rem 1rem;
+    border-radius: .7rem;
+    cursor: pointer;
+    transition: background-color .3s;
+    border: 2px solid var(--color-quinto);
+
+  }
+
+  .agregar__producto:hover {
+    background-color: var(--color-quinto);
+    color:var(--color-primario);
+  }
+
+  /*Carrito*/
+
+  .contenedor__carrito {
+    display:flex;
+    flex-direction:column;
+    gap:1.5rem;
+  }
+
+  .producto__Carrito {
+    display:flex;
+    justify-content:space-between;
+    align-items:center;
+    background-color:black;
+    color:white;
+    padding:.5rem;
+    padding-right:1.5rem;
+    border-radius:1rem;
+  }
+  .carrito__Imagen {
+    width: 7rem;
+    border-radius: 1rem;
+  }
+
+  .producto__Carrito small {
+    font-size: .8rem;
+  }
+  .carrito__Eliminar {
+  border:0;
+  background-color:transparent;
+  cursor:pointer;
+  }
+
+  .acciones__carrito {
+    display:flex;
+    justify-content:space-between;
+    margin-top:1rem;
+  }
+
+  .acciones__carrito_vaciar {
+    border-radius:1rem;
+    color:var(--color-quinto);
+    text-transform:upperCase;
+    cursor:pointer;
+    border:0;
+    background-color:var(--color-ternario);
+    padding:0.7rem;
+
+  }
+  .acciones__carrito_vaciar:hover{
+    color:gray;
+    border:2px solid gray;
+    background-color:var(--color-quinto);
+
+  }
+
+  .acciones__carrito_derecha{
+    display:flex;
+  }
+
+  .acciones__carrito_total {
+    display:flex;
+    background-color:var(--color-sexto);
+    border-top-left-radius:0.7rem;
+    border-bottom-left-radius:0.7rem;
+    color:var(--color-quinto);
+    text-transform:upperCase;
+    padding:0.2rem;
+    gap:1rem; 
+  }
+
+  .acciones__carrito_comprar {
+
+    border:0;
+    background-color:var(--color-sexto);
+    padding:1rem;
+    color:var(--color-quinto);
+    text-transform:upperCase;
+    cursor:pointer;
+    border-top-right-radius:0.7rem;
+    border-bottom-right-radius:0.7rem;
+
+  }
+  .acciones__carrito_comprar:hover {
+    background-color:var(--color-primario);
+    color:var(--color-ternario);
+    border:2px solid gray;   
+  }
+
+  .alerta__carrito image {
+    display:flex;
+    align-items:center;
+  }
+
+  .alerta__carrito p {
+    margin-right:.3rem;
+    font-size:1.1rem;
+  }
+
+  .close__menu{
+    display:none;
+  }
+
+  @media screen and (max-width:700px) {
+    .contain {
+      display: flex;
+      flex-direction: column;
+      min-height:100vh;
+    }
+    .logo {
+      font-size:1.4rem;
+      margin-bottom:0
+    }
+
+    aside {
+      position:fixed;
+      background-color: var(--color-ternario);
+      flex-direction: column;
+      display:flex;
+      left:0;
+      opacity:0;
+      width: 50%;
+      visibility: hidden;
+      transition:0.3s;
+      padding:1rem;
+      padding-right: 0;
+      color: var(--color-primario);
+      box-shadow: rgba(0, 0, 0, 0.35) 0px 5px 15px;
+  
+    }
+    .aside-visible {
+      transform:translateX(0%);
+      opacity:1;
+      visibility:visible;
+    }
+
+
+
+
+    
+
+  }
+
+
+
+
+
+
+
+
+
+
+
+
+
+
 
 
 
@@ -514,7 +718,7 @@ renderCarrito() {
           <button class="acciones__carrito_comprar" @click=${() => this.alerta(Swal)}>¡Comprar ahora!</button>
         </div>
       </div>
-    ` : html`<div class="alerta__carrito"><p>Tu carrito está vacío...</p><img class="gato" src="./public/Gato.svg" alt=""></div>`}
+    ` : html`<div class="alerta__carrito"><p>Tu carrito está vacío...</p><img class="" src="" alt=""></div>`}
   `;
 }
 
