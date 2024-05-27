@@ -211,9 +211,140 @@ class MyElement extends LitElement {
   }
 
   .button__Category {
-    font
+    font-size:1rem;
+    text-align: center;
+    width:100%;
+    padding:1rem;
+    font-weight:700;
+    color: var(--color-quinto);
+    border:0;
+    background-color: var(--color-ternario);
+    cursor: pointer;
+    transition: all 0.3s ease-in-out;
+    gap:1rem;
+
+
   }
+
+  .button__Category:hover {
+    background-color: var(--color-sexto);
+    color: var(--color-primario);
+    width:100%;
+    position:relative;
+    border-top-left-radius:1rem;
+    border-top-right-radius:1rem;
+  }
+
+  .button__Category.active {
+    background-color: var(--color-sexto);
+    color: var(--color-primario);
+    width:100%;
+    position:relative;
+    border-top-left-radius:1rem;
+    border-top-right-radius:1rem;
+  }
+
+  .button__Category.active::before {
+
+    content: '';
+    position: absolute;
+    width:1rem;
+    height:2rem;
+    bottom:100%;
+    right:0;
+    background-color:transparent;
+    border-bottom-right-radius:.8rem;
+    box-shadow: rgba(0, 0, 0, 0.35) 0px 5px 15px;
     
+  }
+
+  
+  .button__Category.active::after {
+
+    content: '';
+    position: absolute;
+    width:1rem;
+    height:2rem;
+    bottom:100%;
+    right:0;
+    background-color:transparent;
+    border-bottom-right-radius:.8rem;
+    box-shadow: rgba(0, 0, 0, 0.35) 0px 5px 15px;
+    
+  }
+
+  .cart__Button {
+    font-size:1rem;
+    text-align: center;
+    width:100%;
+    padding:1rem;
+    font-weight:700;
+    color: var(--color-quinto);
+    border:0;
+    background-color: var(--color-primario);
+    cursor: pointer;
+    transition: all 0.3s ease-in-out;
+    gap:1rem;
+    display:block;
+  }
+
+  .cart__Button.active {
+    background-color: var(--color-sexto);
+    color: var(--color-primario);
+    width:90%;
+    position:relative;
+    border-top-left-radius:1rem;
+    border-top-right-radius:1rem;
+  }
+
+  .cart__Button.active::before {
+
+    content: '';
+    position: absolute;
+    width:1rem;
+    height:2rem;
+    bottom:100%;
+    right:0;
+    background-color:transparent;
+    border-bottom-right-radius:.8rem;
+    box-shadow: rgba(0, 0, 0, 0.35) 0px 5px 15px;
+    
+  }
+  .cart__Button.active::after {
+
+    content: '';
+    position: absolute;
+    width:1rem;
+    height:2rem;
+    top:100%;
+    right:0;
+    background-color:transparent;
+    border-top-right-radius:.8rem;
+    box-shadow: rgba(0, 0, 0, 0.35) 0px 5px 15px;
+    
+  }
+  .cart__Button.active.number {
+    background-color: var(--color-ternario);
+    color:var(--color-quinto);
+  }
+
+  .cart__Button:hover {
+    background-color: var(--color-quinto);
+    color:var(--color-ternario);
+    border-top-left-radius:1rem;
+    border-bottom-left-radius:1rem;
+    position: relative;
+  }
+
+
+
+
+
+
+
+
+
+
   `;
 
   render() {
