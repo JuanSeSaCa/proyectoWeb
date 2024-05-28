@@ -137,54 +137,50 @@
 import { LitElement, html, css } from 'lit'
 
 class MyElement extends LitElement {
-  static get properties()  {
-    return {
-    activeCategory: { type: String },
-    view: { type: String },
-    cartItems: { type: Array },
-    products: { type: Array },
-    menuOpen: { type: Boolean }
-    };
-  }
-
-  constructor() {
-    super();
-    this.activeCategory = 'all';
-    this.view = 'products';
-    this.cartItems = [];
-    this.products = [];
-    this.menuOpen = false;
-    this.loadProducts();
-  }
-
-  connectedCallback() {
-    super.connectedCallback();
-    this.loadProducts();
-  }
-
-  async loadProducts() {
-    try {
-      const response = await fetch('../src/productos.jsonn');
-      if (!response.ok) {
-        throw new Error(`HTTP error: ${response.status}`);
-      }else {
-
-        const data = await response.json();
-        this.products = data.map(item => ({
-          id: item.id,
-          title: item.titulo,
-          image: item.imagen,
-          category: item.categoria.id,
-          price: item.precio
-        }));
-        this.requestUpdate();
-      }
-    } catch (error) {
-      console.error('Error al cargar los productos:', error);
+    static get properties() {
+        return {
+            activeCategory: { type: String },
+            view: { type: String },
+            cartItems: { type: Array },
+            products: { type: Array },
+            menuOpen: { type: Boolean }
+        };
     }
-  }
-///////////// css //////////////////
-  static styles = css`
+
+    constructor() {
+        super();
+        this.activeCategory = 'all';
+        this.view = 'products';
+        this.cartItems = [];
+        this.products = [];
+        this.menuOpen = false;
+        this.loadProducts();
+    }
+
+    connectedCallback() {
+        super.connectedCallback();
+        this.loadProducts();
+    }
+
+    async loadProducts() {
+        try {
+            const response = await fetch('../db/productos.json');
+            const data = await response.json();
+            this.products = data.map(item => ({
+                id: item.id,
+                title: item.titulo,
+                image: item.imagen,
+                category: item.categoria.id,
+                price: item.precio
+            }));
+            this.requestUpdate();
+        }
+        } catch (error) {
+            console.error('Error al cargar los productos:',error);
+        }
+    }
+    ///////////// css //////////////////
+    static styles = css`
   .contain {
   display: grid;
   grid-template-columns: 1fr 4fr;
@@ -596,8 +592,8 @@ class MyElement extends LitElement {
 
   `;
 
-  render() {
-    return html`
+    render() {
+        return html`
     <div class="contain">
     <header class="header">
         <h1 class="logo">CampusShop</h1>
@@ -631,32 +627,33 @@ class MyElement extends LitElement {
             </footer>
         </aside>
         <main>
-            ${this.view === 'products' ? this.renderProducts() : this.renderCart()}
+            ${this.view === 'products' ? this.renderizarProductos() : this.renderCarrito()}
         </main>
     </div>
     `;
-  }
-
- 
-verCarrito() {
-  this.activeCategory = null;
-  this.view = 'carrito';
-  this.menuOpen = false; // 
-  this.requestUpdate();
-}
+    }
 
 
-cambiarCategoria(categoria) {
-  this.activeCategory = categoria;
-  this.view = 'productos';
-  this.menuOpen = false; 
-  this.requestUpdate();
-}
+    verCarrito() {
+        this.activeCategory = null;
+        this.view = 'carrito';
+        this.menuOpen = false; // 
+        this.requestUpdate();
+    }
 
 
-renderizarProductos() {
-  const productosFiltrados = this.productos.filter(producto => this.activeCategory === 'todos' || producto.category === this.activeCategory);
-  return html`
+    cambiarCategoria(categoria) {
+        this.activeCategory = categoria;
+        this.view = 'productos';
+        this.menuOpen = false;
+        this.requestUpdate();
+    }
+
+
+    renderizarProductos() {
+        // console.log(this.products);
+        const productosFiltrados = this.productos.filter(producto => this.activeCategory === 'todos' || producto.category === this.activeCategory);
+        return html`
     <h2 class="principal__Titulo">${this.activeCategory === 'todos' ? 'Todos los productos' : this.activeCategory.charAt(0).toUpperCase() + this.activeCategory.slice(1)}</h2>
     <div class="contenedor__productos">
       ${productosFiltrados.map(producto => html`
@@ -671,13 +668,13 @@ renderizarProductos() {
       `)}
     </div>
   `;
-}
+    }
 
 
-renderCarrito() {
-  const total = this.itemsCarrito.reduce((acumulador, item) => acumulador + item.subtotal, 0);
+    renderCarrito() {
+        const total = this.itemsCarrito.reduce((acumulador, item) => acumulador + item.subtotal, 0);
 
-  return html`
+        return html`
     <h2 class="principal__Titulo">Carrito de Compras</h2>
     ${this.cartItems.length > 0 ? html`
       <div class="contenedor__carrito"> 
@@ -720,78 +717,77 @@ renderCarrito() {
       </div>
     ` : html`<div class="alerta__carrito"><p>Tu carrito está vacío...</p><img class="" src="" alt=""></div>`}
   `;
-}
+    }
 
 
-  eliminarDelCarrito(productId) {
-    const itemIndex = this.cartItems.findIndex(item => item.id === productId);
-    if (itemIndex > -1) {
-        if (this.cartItems[itemIndex].quantity > 1) {
-            this.cartItems[itemIndex].quantity -= 1;
-            this.cartItems[itemIndex].subtotal = this.cartItems[itemIndex].quantity * this.cartItems[itemIndex].price;
-        } else {
-            this.cartItems = this.cartItems.filter(item => item.id !== productId);
+    eliminarDelCarrito(productId) {
+        const itemIndex = this.cartItems.findIndex(item => item.id === productId);
+        if (itemIndex > -1) {
+            if (this.cartItems[itemIndex].quantity > 1) {
+                this.cartItems[itemIndex].quantity -= 1;
+                this.cartItems[itemIndex].subtotal = this.cartItems[itemIndex].quantity * this.cartItems[itemIndex].price;
+            } else {
+                this.cartItems = this.cartItems.filter(item => item.id !== productId);
+            }
         }
+        this.requestUpdate();
     }
-    this.requestUpdate();
-  }
 
 
 
-  vaciarCarrito() {
-    this.cartItems = [];
-    this.requestUpdate();
-  }
-
-
-  agregarAlCarrito(product) {
-    agregar()
-    const cartItem = this.cartItems.find(item => item.id === product.id);
-    if (cartItem) {
-        cartItem.quantity += 1;
-        cartItem.subtotal = cartItem.quantity * cartItem.price;
-    } else {
-        this.cartItems = [
-            ...this.cartItems,
-            { ...product, quantity: 1, subtotal: product.price }
-        ];
+    vaciarCarrito() {
+        this.cartItems = [];
+        this.requestUpdate();
     }
-    this.requestUpdate();
-  }
+
+
+    agregarAlCarrito(product) {
+        agregar()
+        const cartItem = this.cartItems.find(item => item.id === product.id);
+        if (cartItem) {
+            cartItem.quantity += 1;
+            cartItem.subtotal = cartItem.quantity * cartItem.price;
+        } else {
+            this.cartItems = [
+                ...this.cartItems,
+                { ...product, quantity: 1, subtotal: product.price }
+            ];
+        }
+        this.requestUpdate();
+    }
 
 
 
-  openMenu() {
-    this.menuOpen = true;
-    this.requestUpdate();
-  }
+    openMenu() {
+        this.menuOpen = true;
+        this.requestUpdate();
+    }
 
 
-  closeMenu() {
-    this.menuOpen = false;
-    this.requestUpdate();
-  }
+    closeMenu() {
+        this.menuOpen = false;
+        this.requestUpdate();
+    }
 
 
 }
 customElements.define('my-element', MyElement);
 
-      
+
 const agregar = async () => {
-  const Toast = Swal.mixin({
-    toast: true,
-    position: "top-end",
-    showConfirmButton: false,
-    timer: 2000,
-    timerProgressBar: true,
-    didOpen: (toast) => {
-      toast.onmouseenter = Swal.stopTimer;
-      toast.onmouseleave = Swal.resumeTimer;
-    }
-  });
-  Toast.fire({
-    icon: "success",
-    title: "Producto agregado exitosamente :)"
-  });
+    const Toast = Swal.mixin({
+        toast: true,
+        position: "top-end",
+        showConfirmButton: false,
+        timer: 2000,
+        timerProgressBar: true,
+        didOpen: (toast) => {
+            toast.onmouseenter = Swal.stopTimer;
+            toast.onmouseleave = Swal.resumeTimer;
+        }
+    });
+    Toast.fire({
+        icon: "success",
+        title: "Producto agregado exitosamente :)"
+    });
 }
-   
