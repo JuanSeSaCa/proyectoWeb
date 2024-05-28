@@ -153,6 +153,7 @@ class MyElement extends LitElement {
         this.view = 'products';
         this.cartItems = [];
         this.products = [];
+        this.loadProducts();
         this.menuOpen = false;
         this.loadProducts();
     }
@@ -164,7 +165,7 @@ class MyElement extends LitElement {
 
     async loadProducts() {
         try {
-            const response = await fetch('../db/productos.json');
+            const response = await fetch('../js/products.json');
             const data = await response.json();
             this.products = data.map(item => ({
                 id: item.id,
@@ -174,17 +175,16 @@ class MyElement extends LitElement {
                 price: item.precio
             }));
             this.requestUpdate();
-        }
         } catch (error) {
             console.error('Error al cargar los productos:',error);
         }
     }
     ///////////// css //////////////////
-    static styles = css`
+ static styles = css`
   .contain {
-  display: grid;
-  grid-template-columns: 1fr 4fr;
-  background-color: var(--color-ternario);
+    display: grid;
+    grid-template-columns: 1fr 4fr;
+    background-color: var(--color-ternario);
   }
 
   aside {
@@ -361,51 +361,48 @@ class MyElement extends LitElement {
     border-radius: 1.5rem;
   }
 
-  .principal__Titulo {
+  .principal__Title {
     margin-bottom: 1.5rem;
     color: var(--color-primario)
   }
   
-  .contenedor__productos{
+  .product__container{
     display: grid;
-    grid-template-columns: repeat(auto-fill, minmax(250px, 1fr));
-    grid-auto-flow: row;
-    height: calc(100vh - 140px);
-    overflow-y: scroll;
-    gap: 1.5rem;
+    grid-template-columns: repeat(4, 1fr);
+    gap: 2rem; 
   }
-  .producto {
+  .products {
     background-color: var(--color-cuarto) ;
     padding: 1rem;
     border-radius: 1rem;
     text-align: center;
   }
-  .producto:hover {
+  .products:hover {
     transform: scale(1.03);
-        transition: transform 0.3s ease-in-out;
+    transition: transform 0.3s ease-in-out;
   }
-  .producto__Imagen {
+  .product__Image {
     max-width: 100%;
     border-radius: 1rem;
   }
-  .producto__Detalles {
+  .product__Details {
     margin-top: 1rem;
   }
 
-  .producto__Titulo {
+  ..product__Title {
     color:var(--color-quinto);
     font-size: 1.2rem;
     margin-bottom: .4rem;
   }
 
-  .producto__Precio {
+  .product__Price {
     color: var(--color-quinto);
     font-weight: bold;
     margin-bottom: 1rem;
 
   }
 
-  .agregar__producto {
+  .add__product {
 
     background-color: var(--color-sexto);
     color: var(--color-quinto);
@@ -418,20 +415,20 @@ class MyElement extends LitElement {
 
   }
 
-  .agregar__producto:hover {
+  .add__product:hover {
     background-color: var(--color-quinto);
     color:var(--color-primario);
   }
 
   /*Carrito*/
 
-  .contenedor__carrito {
+  .container__ProductCart {
     display:flex;
     flex-direction:column;
     gap:1.5rem;
   }
 
-  .producto__Carrito {
+  .product__Cart {
     display:flex;
     justify-content:space-between;
     align-items:center;
@@ -441,27 +438,32 @@ class MyElement extends LitElement {
     padding-right:1.5rem;
     border-radius:1rem;
   }
-  .carrito__Imagen {
+  .cart__Image {
     width: 7rem;
     border-radius: 1rem;
   }
 
-  .producto__Carrito small {
+  .product__Cart small {
     font-size: .8rem;
   }
-  .carrito__Eliminar {
+  .cart__Delete {
   border:0;
   background-color:transparent;
   cursor:pointer;
   }
+  .cart__Container{
+    display:flex;
+    flex-direction:column;
+    gap:1.5rem;
+}
 
-  .acciones__carrito {
+  .cart__Actions {
     display:flex;
     justify-content:space-between;
     margin-top:1rem;
   }
 
-  .acciones__carrito_vaciar {
+  .cart__Actions_Delete {
     border-radius:1rem;
     color:var(--color-quinto);
     text-transform:upperCase;
@@ -471,18 +473,18 @@ class MyElement extends LitElement {
     padding:0.7rem;
 
   }
-  .acciones__carrito_vaciar:hover{
+  .cart__Actions_Delete:hover{
     color:gray;
     border:2px solid gray;
     background-color:var(--color-quinto);
 
   }
 
-  .acciones__carrito_derecha{
+  .cart__Actions_Right{
     display:flex;
   }
 
-  .acciones__carrito_total {
+  .cart__Actions_Total {
     display:flex;
     background-color:var(--color-sexto);
     border-top-left-radius:0.7rem;
@@ -493,7 +495,7 @@ class MyElement extends LitElement {
     gap:1rem; 
   }
 
-  .acciones__carrito_comprar {
+  .cart__Actions_Buy {
 
     border:0;
     background-color:var(--color-sexto);
@@ -505,107 +507,190 @@ class MyElement extends LitElement {
     border-bottom-right-radius:0.7rem;
 
   }
-  .acciones__carrito_comprar:hover {
+  .cart__Actions_Buy:hover {
     background-color:var(--color-primario);
     color:var(--color-ternario);
     border:2px solid gray;   
   }
 
-  .alerta__carrito image {
+  .kitty{
     display:flex;
     align-items:center;
-  }
-
-  .alerta__carrito p {
-    margin-right:.3rem;
-    font-size:1.1rem;
-  }
-
-  .close__menu{
-    display:none;
-  }
-
-  @media screen and (max-width:700px) {
-    .contain {
-      display: flex;
-      flex-direction: column;
-      min-height:100vh;
     }
-    .logo {
-      font-size:1.4rem;
-      margin-bottom:0
+    .kitty p{
+        margin-right:.3rem;
+        font-size:1.1rem;
     }
-
-    aside {
-      position:fixed;
-      background-color: var(--color-ternario);
-      flex-direction: column;
-      display:flex;
-      left:0;
-      opacity:0;
-      width: 50%;
-      visibility: hidden;
-      transition:0.3s;
-      padding:1rem;
-      padding-right: 0;
-      color: var(--color-primario);
-      box-shadow: rgba(0, 0, 0, 0.35) 0px 5px 15px;
-  
+    .header__Mobile{
+        display:none;
     }
-    .aside-visible {
-      transform:translateX(0%);
-      opacity:1;
-      visibility:visible;
+    .close__menu{
+        display:none;
     }
 
 
+    @media screen and (max-width:700px) {
+        .contain {
+            display: flex;
+            flex-direction: column;
+            min-height:100vh;
+        }
+        .logo {
+            font-size:1.4rem;
+            margin-bottom:0
+        }
 
-
+        aside {
+            position:fixed;
+            z-index:9;
+            background-color: var(--color-ternario);
+            flex-direction: column;
+            display:flex;
+            left:0;
+            opacity:0;
+            width: 50%;
+            visibility: hidden;
+            transition:0.3s;
+            padding:1rem;
+            padding-right: 0;
+            color: var(--color-primario);
+            box-shadow: rgba(0, 0, 0, 0.35) 0px 5px 15px;
+            transform:translateX(-100%);
     
+        }
+        .aside-visible {
+        transform:translateX(0%);
+        opacity:1;
+        visibility:visible;
+        }
+        main{
+            margin:1rem;
+            padding:1.5rem;
+        }
+        .product__container{
+            grid-template-columns:1fr;
+        }
+        .button__Category.active::before,
+        .button__Category.active::after,
+        .cart__Button.active::before,
+        .cart__Button.active::after{
+            display:none
+        }
+        .cart__Button.active{
+            width:84%; 
+        }
+        .cart__Button:hover{
+            width:84%;
+        }
+        .header{
+            display:flex;
+            padding:1rem;
+            justify-content:space-between;
+            align-items:center;
+        }
+        .header__Mobile .logo{
+            color:var(--clr-white);
+        }
+        .menu{
+            gap:2rem;
+            padding:0;
+            margin:0; 
+            width:100%; 
+        }
+        .open__menu,
+        .close__menu{
+            background-color:transparent;
+            color:var(--color-quinto);
+            border:none;
+            cursor:pointer;
+        }
+        .menu__svg{
+            width:2.5rem;
+        }
+        .close__menu{
+            display:block;
+            height:0;
+        }
+        .header__menu{
+            display:flex;
+            width:100%;
+            justify-content: space-between;
+            align-items: center;
+        }
+        ul{
+            margin:0;
+            padding:0; 
+            width:100%; 
+        }
+        nav{
+            width:100%; 
+        }
+        .menu {
+            list-style:none;
+            padding:0;
+            margin:0; 
+            width:100%; 
+        }
+        .button__Category{
+            width:100%; 
+        }
+        .cart__Button{
+            width:84%; 
+        }
 
-  }
+        .cart__Image{
+            width: 40%; 
+            margin-bottom:1rem;
+        }
+        .product__Cart{
+            padding: 1.5rem;
+            flex-wrap: wrap;
+        }
+        .principal__Title {
+            margin-bottom: 1.5rem;
+        }
+        .cart__Actions_Right {
+            display: flex;
+            width: 64%;
+            margin-left: 1rem;
+        }
+        .cart__Actions_Delete {
+            padding:.9rem;
+        }
+        .content__Product{
+            font-size: 0.9rem;
+            margin-right: 0.5rem;
+            width: 46%;
+        }
 
+        .cart__Amount,
+        .cart__Price,
+        .cart__Subtotal{
+            font-size:.8rem;
+            margin-right: .5rem;
+        }
 
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
+        .cart__Delete img{
+            width:1.5rem;
+        }
+    }
 
   `;
 
-    render() {
-        return html`
+render() {
+return html`
     <div class="contain">
     <header class="header">
         <h1 class="logo">CampusShop</h1>
         <button class="open__menu" @click="${this.openMenu}">
-            <img class="menu__svg" src="./public/menu.svg" alt="">
+            <img class="menu__svg" src="./public" alt="">
         </button>
     </header>
     <aside class="${this.menuOpen ? 'aside-visible' : ''}">
         <header class="header__menu">
             <h1 class="logo">CampusShop</h1>
             <button class="close__menu" @click="${this.closeMenu}">
-                <img class="closeMenu__svg" src="./public/closeMenu__svg.svg" alt="">
+                <img class="closeMenu__svg" src="../storage/img/closeMenu__svg.svg" alt="">
             </button>
         </header>
             <nav>
@@ -625,156 +710,151 @@ class MyElement extends LitElement {
             <footer>
                 <p class="footer__text">© 2024 CampusShop</p>
             </footer>
-        </aside>
-        <main>
-            ${this.view === 'products' ? this.renderizarProductos() : this.renderCarrito()}
-        </main>
-    </div>
-    `;
-    }
-
-
-    verCarrito() {
-        this.activeCategory = null;
-        this.view = 'carrito';
-        this.menuOpen = false; // 
-        this.requestUpdate();
-    }
-
-
-    cambiarCategoria(categoria) {
-        this.activeCategory = categoria;
-        this.view = 'productos';
-        this.menuOpen = false;
-        this.requestUpdate();
-    }
-
-
-    renderizarProductos() {
-        // console.log(this.products);
-        const productosFiltrados = this.productos.filter(producto => this.activeCategory === 'todos' || producto.category === this.activeCategory);
-        return html`
-    <h2 class="principal__Titulo">${this.activeCategory === 'todos' ? 'Todos los productos' : this.activeCategory.charAt(0).toUpperCase() + this.activeCategory.slice(1)}</h2>
-    <div class="contenedor__productos">
-      ${productosFiltrados.map(producto => html`
-        <div class="producto">
-          <img class="producto__Imagen" src=${producto.imagen} alt="">
-          <div class="producto__Detalles">
-            <h3 class="producto__Titulo">${producto.titulo}</h3>
-            <p class="producto__Precio">$${producto.precio}</p>
-            <button class="agregar__producto" @click=${() => this.agregarAlCarrito(producto)}>Agregar</button>
-          </div>
-        </div>
-      `)}
-    </div>
-  `;
-    }
-
-
-    renderCarrito() {
-        const total = this.itemsCarrito.reduce((acumulador, item) => acumulador + item.subtotal, 0);
-
-        return html`
-    <h2 class="principal__Titulo">Carrito de Compras</h2>
-    ${this.cartItems.length > 0 ? html`
-      <div class="contenedor__carrito"> 
-        ${this.cartItems.map(item => html`
-          <div class="producto__Carrito"> 
-            <img class="carrito__Imagen" src="${item.imagen}" alt="">
-            <div class="contenido__Producto">
-              <small>Producto</small>    
-              <h3>${item.titulo}</h3>
-            </div>
-            <div class="carrito__Cantidad">
-              <small>Cantidad</small>
-              <p>${item.cantidad}</p>
-            </div>
-            <div class="carrito__Precio">
-              <small>Precio</small>
-              <p>$${item.precio}</p>
-            </div>
-            <div class="carrito__Subtotal">
-              <small>Subtotal</small>
-              <p>$${item.subtotal}</p>
-            </div>
-            <button class="carrito__Eliminar" @click=${() => this.eliminarDelCarrito(item.id)}>
-              <img src="./public/icono.svg" alt="">
-            </button>
-          </div>
-        `)}
-      </div>
-      <div class="acciones__carrito">
-        <div class="acciones__carrito_izquierda">
-          <button class="acciones__carrito_vaciar" @click=${this.vaciarCarrito}>Vaciar Carrito</button>
-        </div>
-        <div class="acciones__carrito_derecha">
-          <div class="acciones__carrito_total">
-            <p>Total:</p>
-            <p>$${total}</p>
-          </div>
-          <button class="acciones__carrito_comprar" @click=${() => this.alerta(Swal)}>¡Comprar ahora!</button>
-        </div>
-      </div>
-    ` : html`<div class="alerta__carrito"><p>Tu carrito está vacío...</p><img class="" src="" alt=""></div>`}
-  `;
-    }
-
-
-    eliminarDelCarrito(productId) {
-        const itemIndex = this.cartItems.findIndex(item => item.id === productId);
-        if (itemIndex > -1) {
-            if (this.cartItems[itemIndex].quantity > 1) {
-                this.cartItems[itemIndex].quantity -= 1;
-                this.cartItems[itemIndex].subtotal = this.cartItems[itemIndex].quantity * this.cartItems[itemIndex].price;
-            } else {
-                this.cartItems = this.cartItems.filter(item => item.id !== productId);
-            }
-        }
-        this.requestUpdate();
-    }
-
-
-
-    vaciarCarrito() {
-        this.cartItems = [];
-        this.requestUpdate();
-    }
-
-
-    agregarAlCarrito(product) {
-        agregar()
-        const cartItem = this.cartItems.find(item => item.id === product.id);
-        if (cartItem) {
-            cartItem.quantity += 1;
-            cartItem.subtotal = cartItem.quantity * cartItem.price;
-        } else {
-            this.cartItems = [
-                ...this.cartItems,
-                { ...product, quantity: 1, subtotal: product.price }
-            ];
-        }
-        this.requestUpdate();
-    }
-
-
-
-    openMenu() {
-        this.menuOpen = true;
-        this.requestUpdate();
-    }
-
-
-    closeMenu() {
-        this.menuOpen = false;
-        this.requestUpdate();
-    }
-
-
+    </aside>
+    <main>
+            ${this.view === 'products' ? this.renderProducts() : this.renderCart()}
+    </main>
+</div>
+`;
 }
-customElements.define('my-element', MyElement);
 
 
-const agregar = async () => {
+viewCart() {
+    this.activeCategory = null;
+    this.view = 'cart';
+    this.menuOpen = false; 
+    this.requestUpdate();
+}
+
+changeCategory(category) {
+    this.activeCategory = category;
+    this.view = 'products';
+    this.menuOpen = false; 
+    this.requestUpdate();
+}
+
+
+
+renderProducts() {
+    const filteredProducts = this.products.filter(product => this.activeCategory === 'all' || product.category === this.activeCategory);
+    return html`
+        <h2 class="principal__Title">${this.activeCategory === 'all' ? 'Todos los productos' : this.activeCategory.charAt(0).toUpperCase() + this.activeCategory.slice(1)}</h2>
+        <div class="product__container">
+            ${filteredProducts.map(product => html`
+                <div class="products">
+                    <img class="product__Image" src=${product.image} alt="">
+                    <div class="product__Details">
+                        <h3 class="product__Title">${product.title}</h3>
+                        <p class="product__Price">$${product.price}</p>
+                        <button class="add__product" @click=${() => this.addToCart(product)}>Agregar</button>
+                    </div>
+                </div>
+            `)}
+        </div>
+    `;
+}
+
+
+renderCart() {
+    const total = this.cartItems.reduce((acc, item) => acc + item.subtotal, 0);
+
+    return html`
+        <h2 class="principal__Title">Carrito de Compras</h2>
+        ${this.cartItems.length > 0 ? html`
+            <div class="cart__Container"> 
+                ${this.cartItems.map(item => html`
+                <div class="product__Cart"> 
+                    <img class="cart__Image" src="${item.image}" alt="">
+                    <div class="content__Product">
+                        <small>Productos</small>    
+                        <h3>${item.title}</h3>
+                    </div>
+                    <div class="cart__Amount">
+                        <small>Cantidad</small>
+                        <p>${item.quantity}</p>
+                    </div>
+                    <div class="cart__Price">
+                        <small>Precio</small>
+                        <p>$${item.price}</p>
+                    </div>
+                    <div class="cart__Subtotal">
+                        <small>Subtotal</small>
+                        <p>$${item.subtotal}</p>
+                    </div>
+                    <button class="cart__Delete" @click=${() => this.removeFromCart(item.id)}>
+                        <img src="../storage/img/icon.svg" alt="">
+                    </button>
+                </div>
+                `)}
+            </div>
+            <div class="cart__Actions">
+                <div class="cart__Actions_Left">
+                    <button class="cart__Actions_Delete" @click=${this.emptyCart}>Vaciar Carrito</button>
+                </div>
+                <div class="cart__Actions_Right">
+                    <div class="cart__Actions_Total">
+                        <p>Total:</p>
+                        <p>$${total}</p>
+                    </div>
+                    <button class="cart__Actions_Buy" @click=${() => this.alert(Swal)}>Buy now!</button>
+                </div>
+            </div>
+        ` : html`<div class="kitty"><p>Tu carrito está vacío. . .</p><img class="Cat"src="../storage/img/Cat.svg" alt=""></div>`}
+    `;
+}
+    
+
+
+removeFromCart(productId) {
+    const itemIndex = this.cartItems.findIndex(item => item.id === productId);
+    if (itemIndex > -1) {
+        if (this.cartItems[itemIndex].quantity > 1) {
+            this.cartItems[itemIndex].quantity -= 1;
+            this.cartItems[itemIndex].subtotal = this.cartItems[itemIndex].quantity * this.cartItems[itemIndex].price;
+        } else {
+            this.cartItems = this.cartItems.filter(item => item.id !== productId);
+        }
+    }
+    this.requestUpdate();
+}
+
+emptyCart() {
+    this.cartItems = [];
+    this.requestUpdate();
+}
+
+addToCart(product) {
+    added()
+    const cartItem = this.cartItems.find(item => item.id === product.id);
+    if (cartItem) {
+        cartItem.quantity += 1;
+        cartItem.subtotal = cartItem.quantity * cartItem.price;
+    } else {
+        this.cartItems = [
+            ...this.cartItems,
+            { ...product, quantity: 1, subtotal: product.price }
+        ];
+    }
+    this.requestUpdate();
+}
+    
+openMenu() {
+    this.menuOpen = true;
+    this.requestUpdate();
+}
+    
+closeMenu() {
+    this.menuOpen = false;
+    this.requestUpdate();
+}
+    
+}
+
+customElements.define('my-element', MyElement)
+    
+
+
+const added = async () => {
     const Toast = Swal.mixin({
         toast: true,
         position: "top-end",
@@ -785,9 +865,9 @@ const agregar = async () => {
             toast.onmouseenter = Swal.stopTimer;
             toast.onmouseleave = Swal.resumeTimer;
         }
-    });
-    Toast.fire({
-        icon: "success",
-        title: "Producto agregado exitosamente :)"
-    });
+        });
+        Toast.fire({
+            icon: "success",
+            title: "Producto agregado exitosamente :)"
+        });
 }
