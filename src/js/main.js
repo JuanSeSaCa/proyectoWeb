@@ -744,6 +744,7 @@ renderProducts() {
             ${filteredProducts.map(product => html`
                 <div class="products">
                     <img class="product__Image" src=${product.image} alt="">
+                    ${console.log(product.image)}
                     <div class="product__Details">
                         <h3 class="product__Title">${product.title}</h3>
                         <p class="product__Price">$${product.price}</p>
