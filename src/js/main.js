@@ -153,7 +153,6 @@ class MyElement extends LitElement {
         this.view = 'products';
         this.cartItems = [];
         this.products = [];
-        this.loadProducts();
         this.menuOpen = false;
         this.loadProducts();
     }
@@ -165,7 +164,7 @@ class MyElement extends LitElement {
 
     async loadProducts() {
         try {
-            const response = await fetch('../js/products.json');
+            const response = await fetch('/src/js/products.json');
             const data = await response.json();
             this.products = data.map(item => ({
                 id: item.id,
@@ -174,7 +173,7 @@ class MyElement extends LitElement {
                 category: item.categoria.id,
                 price: item.precio
             }));
-            this.requestUpdate();
+            // this.requestUpdate();
         } catch (error) {
             console.error('Error al cargar los productos:',error);
         }
@@ -211,7 +210,7 @@ class MyElement extends LitElement {
     text-align: center;
     width:100%;
     padding:1rem;
-    font-weight:700;
+    font-weight:800;
     color: var(--color-quinto);
     border:0;
     background-color: var(--color-ternario);
@@ -257,14 +256,14 @@ class MyElement extends LitElement {
   
   .button__Category.active::after {
 
-    content: '';
-    position: absolute;
+    content:'';
+    position:absolute;
     width:1rem;
     height:2rem;
-    bottom:100%;
+    top:100%;
     right:0;
     background-color:transparent;
-    border-bottom-right-radius:.8rem;
+    border-top-right-radius:.7rem;
     box-shadow: rgba(0, 0, 0, 0.35) 0px 5px 15px;
     
   }
@@ -372,7 +371,7 @@ class MyElement extends LitElement {
     gap: 2rem; 
   }
   .products {
-    background-color: var(--color-cuarto) ;
+    background-color: var(--color-sexto) ;
     padding: 1rem;
     border-radius: 1rem;
     text-align: center;
@@ -389,7 +388,7 @@ class MyElement extends LitElement {
     margin-top: 1rem;
   }
 
-  ..product__Title {
+  .product__Title {
     color:var(--color-quinto);
     font-size: 1.2rem;
     margin-bottom: .4rem;
@@ -513,15 +512,17 @@ class MyElement extends LitElement {
     border:2px solid gray;   
   }
 
-  .kitty{
+  .empty__cart{
     display:flex;
     align-items:center;
-    }
-    .kitty p{
-        margin-right:.3rem;
-        font-size:1.1rem;
-    }
-    .header__Mobile{
+  }
+
+  .empty__cart p {
+    margin-right:.3rem;
+    font-size:1.1rem;
+  }
+
+    .header{
         display:none;
     }
     .close__menu{
@@ -680,37 +681,37 @@ class MyElement extends LitElement {
 render() {
 return html`
     <div class="contain">
-    <header class="header">
-        <h1 class="logo">CampusShop</h1>
-        <button class="open__menu" @click="${this.openMenu}">
-            <img class="menu__svg" src="./public" alt="">
-        </button>
-    </header>
-    <aside class="${this.menuOpen ? 'aside-visible' : ''}">
-        <header class="header__menu">
+        <header class="header">
             <h1 class="logo">CampusShop</h1>
-            <button class="close__menu" @click="${this.closeMenu}">
-                <img class="closeMenu__svg" src="../storage/img/closeMenu__svg.svg" alt="">
+            <button class="open__menu" @click="${this.openMenu}">
+                <img class="menu__svg" src="./public" alt="">
             </button>
         </header>
-            <nav>
-                <ul class="menu">
-                    <li><button class="button__Category ${this.activeCategory === 'all' ? 'active' : ''}" @click=${() => this.changeCategory('all')}>Todos los Productos</button></li>
-                    <li><button class="button__Category ${this.activeCategory === 'abrigos' ? 'active' : ''}" @click=${() => this.changeCategory('abrigos')}>Abrigos</button></li>
-                    <li><button class="button__Category ${this.activeCategory === 'camisas' ? 'active' : ''}" @click=${() => this.changeCategory('camisas')}>Camisetas</button></li>
-                    <li><button class="button__Category ${this.activeCategory === 'pantalones' ? 'active' : ''}" @click=${() => this.changeCategory('pantalones')}>Pantalones</button></li>
-                    <li style="width: 100%;">
-                        <a class="cart__Button ${this.view === 'cart' ? 'active' : ''}" @click=${this.viewCart}>
-                            Cart
-                            <span class="number">${this.cartItems.length}</span>
-                        </a>
-                    </li>
-                </ul>
-            </nav>
-            <footer>
-                <p class="footer__text">© 2024 CampusShop</p>
-            </footer>
-    </aside>
+        <aside class="${this.menuOpen ? 'aside-visible' : ''}">
+            <header class="header__menu">
+                <h1 class="logo">CampusShop</h1>
+                <button class="close__menu" @click="${this.closeMenu}">
+                    <img class="closeMenu__svg" src="../storage/img/closeMenu__svg.svg" alt="">
+                </button>
+            </header>
+                <nav>
+                    <ul class="menu">
+                        <li><button class="button__Category ${this.activeCategory === 'all' ? 'active' : ''}" @click=${() => this.changeCategory('all')}>Todos los Productos</button></li>
+                        <li><button class="button__Category ${this.activeCategory === 'abrigos' ? 'active' : ''}" @click=${() => this.changeCategory('abrigos')}>Abrigos</button></li>
+                        <li><button class="button__Category ${this.activeCategory === 'camisas' ? 'active' : ''}" @click=${() => this.changeCategory('camisas')}>Camisetas</button></li>
+                        <li><button class="button__Category ${this.activeCategory === 'pantalones' ? 'active' : ''}" @click=${() => this.changeCategory('pantalones')}>Pantalones</button></li>
+                        <li style="width: 100%;">
+                            <a class="cart__Button ${this.view === 'cart' ? 'active' : ''}" @click=${this.viewCart}>
+                                Cart
+                                <span class="number">${this.cartItems.length}</span>
+                            </a>
+                        </li>
+                    </ul>
+                </nav>
+                <footer>
+                    <p class="footer__text">© 2024 CampusShop</p>
+                </footer>
+        </aside>
     <main>
             ${this.view === 'products' ? this.renderProducts() : this.renderCart()}
     </main>
@@ -723,14 +724,14 @@ viewCart() {
     this.activeCategory = null;
     this.view = 'cart';
     this.menuOpen = false; 
-    this.requestUpdate();
+    // this.requestUpdate();
 }
 
 changeCategory(category) {
     this.activeCategory = category;
     this.view = 'products';
     this.menuOpen = false; 
-    this.requestUpdate();
+    // this.requestUpdate();
 }
 
 
@@ -799,7 +800,7 @@ renderCart() {
                     <button class="cart__Actions_Buy" @click=${() => this.alert(Swal)}>Buy now!</button>
                 </div>
             </div>
-        ` : html`<div class="kitty"><p>Tu carrito está vacío. . .</p><img class="Cat"src="../storage/img/Cat.svg" alt=""></div>`}
+        ` : html`<div class="empty__cart"><p>Tu carrito está vacío. . .</p></div>`}
     `;
 }
     
