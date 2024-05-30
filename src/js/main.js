@@ -226,8 +226,7 @@ class MyElement extends LitElement {
     color: var(--color-primario);
     width:100%;
     position:relative;
-    border-top-left-radius:1rem;
-    border-top-right-radius:1rem;
+    border-radius:7px;
   }
 
   .button__Category.active {
@@ -235,11 +234,11 @@ class MyElement extends LitElement {
     color: var(--color-primario);
     width:100%;
     position:relative;
-    border-top-left-radius:1rem;
-    border-top-right-radius:1rem;
+    border-radius:7px;
+    ;
   }
 
-  .button__Category.active::before {
+  .button__Category.active: {
 
     content: '';
     position: absolute;
@@ -248,14 +247,24 @@ class MyElement extends LitElement {
     bottom:100%;
     right:0;
     background-color:transparent;
-    border-bottom-right-radius:.8rem;
+    border-radius:.8rem;
     box-shadow: rgba(0, 0, 0, 0.35) 0px 5px 15px;
     
   }
 
   
-  .button__Category.active::after {
-
+  .button__Category.active: {
+/*
+    // content:'';
+    // position:absolute;
+    // width:1rem;
+    // height:2rem;
+    // top:100%;
+    // right:0;
+    // background-color:transparent;
+    // border-top-right-radius:.7rem;
+    // box-shadow: rgba(0, 0, 0, 0.35) 0px 5px 15px;
+*/
     content:'';
     position:absolute;
     width:1rem;
@@ -264,14 +273,14 @@ class MyElement extends LitElement {
     right:0;
     background-color:transparent;
     border-top-right-radius:.7rem;
-    box-shadow: rgba(0, 0, 0, 0.35) 0px 5px 15px;
+    box-shadow:0 -1rem 0 ffff;
     
   }
 
   .cart__Button {
     font-size:1rem;
     text-align: center;
-    width:100%;
+    width:80%;
     padding:1rem;
     font-weight:700;
     color: var(--color-quinto);
@@ -281,18 +290,18 @@ class MyElement extends LitElement {
     transition: all 0.3s ease-in-out;
     gap:1rem;
     display:block;
+    border-radius:5px;
   }
 
   .cart__Button.active {
     background-color: var(--color-sexto);
     color: var(--color-primario);
-    width:90%;
+    width:75%;
     position:relative;
-    border-top-left-radius:1rem;
-    border-top-right-radius:1rem;
+    
   }
 
-  .cart__Button.active::before {
+  .cart__Button.active: {
 
     content: '';
     position: absolute;
@@ -301,21 +310,21 @@ class MyElement extends LitElement {
     bottom:100%;
     right:0;
     background-color:transparent;
-    border-bottom-right-radius:.8rem;
+    border-radius:2px;
     box-shadow: rgba(0, 0, 0, 0.35) 0px 5px 15px;
     
   }
-  .cart__Button.active::after {
+//   .cart__Button.active::after {
 
-    content: '';
-    position: absolute;
-    width:1rem;
-    height:2rem;
-    top:100%;
-    right:0;
-    background-color:transparent;
-    border-top-right-radius:.8rem;
-    box-shadow: rgba(0, 0, 0, 0.35) 0px 5px 15px;
+//     content: '';
+//     position: absolute;
+//     width:1rem;
+//     height:2rem;
+//     top:100%;
+//     right:0;
+//     background-color:transparent;
+//     border-radius:7px;
+//     box-shadow: rgba(0, 0, 0, 0.35) 0px 5px 15px;
     
   }
   .cart__Button.active.number {
@@ -326,8 +335,7 @@ class MyElement extends LitElement {
   .cart__Button:hover {
     background-color: var(--color-quinto);
     color:var(--color-ternario);
-    border-top-left-radius:1rem;
-    border-bottom-left-radius:1rem;
+    border-radius:5px;
     position: relative;
   }
 
@@ -431,8 +439,8 @@ class MyElement extends LitElement {
     display:flex;
     justify-content:space-between;
     align-items:center;
-    background-color:black;
-    color:white;
+    background-color:var(--color-sexto);
+    color:var(--color-quinto);
     padding:.5rem;
     padding-right:1.5rem;
     border-radius:1rem;
@@ -497,17 +505,16 @@ class MyElement extends LitElement {
   .cart__Actions_Buy {
 
     border:0;
-    background-color:var(--color-sexto);
+    background-color:var(--color-primario);
     padding:1rem;
     color:var(--color-quinto);
     text-transform:upperCase;
     cursor:pointer;
-    border-top-right-radius:0.7rem;
-    border-bottom-right-radius:0.7rem;
-
+    border-radius:5px;
+    border:2px solid gray;   
   }
   .cart__Actions_Buy:hover {
-    background-color:var(--color-primario);
+    background-color:var(--color-quinto);
     color:var(--color-ternario);
     border:2px solid gray;   
   }
@@ -655,6 +662,12 @@ class MyElement extends LitElement {
             width: 64%;
             margin-left: 1rem;
         }
+
+        .cart__Actions_left {
+            display: flex;
+            width: 64%;
+            color:var(--color-primario);
+        }
         .cart__Actions_Delete {
             padding:.9rem;
         }
@@ -702,7 +715,7 @@ return html`
                         <li><button class="button__Category ${this.activeCategory === 'pantalones' ? 'active' : ''}" @click=${() => this.changeCategory('pantalones')}>Pantalones</button></li>
                         <li style="width: 100%;">
                             <a class="cart__Button ${this.view === 'cart' ? 'active' : ''}" @click=${this.viewCart}>
-                                Cart
+                                Carrito
                                 <span class="number">${this.cartItems.length}</span>
                             </a>
                         </li>
@@ -798,7 +811,7 @@ renderCart() {
                         <p>Total:</p>
                         <p>$${total}</p>
                     </div>
-                    <button class="cart__Actions_Buy" @click=${() => this.alert(Swal)}>Buy now!</button>
+                    <button class="cart__Actions_Buy" @click=${() => this.alert(Swal)}>Comprar!</button>
                 </div>
             </div>
         ` : html`<div class="empty__cart"><p>Tu carrito está vacío. . .</p></div>`}
